@@ -1,0 +1,232 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сводка по неделям — все компании</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--ink:#101828;--mut:#667085;--line:#e4e7ec;--card:#fff;--bg:#f2f4f7;--p:#1f6feb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 60px}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:13.5px;margin-bottom:20px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+ border-top:3px solid var(--c)}
+.kpi .cname{font-size:13px;font-weight:700;margin-bottom:6px}
+.kpi .v{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .k{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-top:2px}
+.kpi .r2{display:flex;gap:14px;margin-top:9px;padding-top:9px;border-top:1px solid var(--line);
+ font-size:12px;color:var(--mut);flex-wrap:wrap}
+.kpi .r2 b{color:var(--ink);font-variant-numeric:tabular-nums}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:18px}
+h2{font-size:17px;margin:0 0 3px}
+.cs{color:var(--mut);font-size:12.5px;margin-bottom:12px}
+.bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.btn{font:inherit;font-size:12.5px;font-weight:600;padding:6px 13px;border:1px solid var(--line);
+ background:#fff;color:var(--mut);border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--p);color:var(--p)}
+.btn.on{background:var(--p);border-color:var(--p);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:700;
+ text-align:right;padding:9px 8px;border-bottom:1px solid #d7dee8;white-space:nowrap}
+th:first-child{text-align:left}
+td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+td:first-child{text-align:left;font-weight:600;white-space:nowrap}
+tfoot td{border-top:2px solid #d7dee8;border-bottom:none;font-weight:700;padding-top:12px}
+tr.grp td{padding:15px 8px 5px;border-bottom:none;text-align:left;font-size:11px;
+ letter-spacing:.06em;text-transform:uppercase;color:var(--p);font-weight:700}
+tr.grp:first-child td{padding-top:0}
+.mut{color:#a8b0bd}
+.cw{position:relative;height:240px}
+.g3{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.g3 h3{font-size:13px;margin:0 0 2px}
+.g3 .cs{margin-bottom:8px;font-size:11.5px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+
+<h1>Сводка по неделям</h1>
+<div class="sub">По каждой компании отдельно · данные по 2026-08-10 · неделя считается с понедельника · <a href="https://scintillating-pastelito-539b28.netlify.app/" style="color:#1f6feb;text-decoration:none">← сводка с выбором периода</a></div>
+
+<div class="kpis"><div class="kpi" style="--c:#1d3b30"><div class="cname">Татэнерго</div><div class="v">951</div><div class="k">задач за 10 нед.</div><div class="r2"><span><b>102</b> с доступом</span><span>посл. неделя <b>130</b> задач</span><span><b>34</b> активных</span><span><b>23</b> с 2+</span></div><div class="r2"><span>агент <b>174</b></span><span>поиск <b>102</b></span><span>обычный <b>675</b></span></div></div><div class="kpi" style="--c:#9a6b2f"><div class="cname">Шишмаойл</div><div class="v">100</div><div class="k">задач за 15 нед.</div><div class="r2"><span><b>14</b> с доступом</span><span>посл. неделя <b>2</b> задач</span><span><b>1</b> активных</span><span><b>1</b> с 2+</span></div><div class="r2"><span>агент <b>31</b></span><span>поиск <b>11</b></span><span>обычный <b>58</b></span></div></div><div class="kpi" style="--c:#4a6b5d"><div class="cname">Иннополис</div><div class="v">204</div><div class="k">задач за 3 нед.</div><div class="r2"><span><b>43</b> с доступом</span><span>посл. неделя <b>78</b> задач</span><span><b>18</b> активных</span><span><b>12</b> с 2+</span></div><div class="r2"><span>агент <b>59</b></span><span>поиск <b>19</b></span><span>обычный <b>126</b></span></div></div><div class="kpi" style="--c:#7d6b52"><div class="cname">Охтин-Ойл</div><div class="v">1 426</div><div class="k">задач за 20 нед.</div><div class="r2"><span><b>39</b> с доступом</span><span>посл. неделя <b>12</b> задач</span><span><b>10</b> активных</span><span><b>2</b> с 2+</span></div><div class="r2"><span>агент <b>947</b></span><span>поиск <b>67</b></span><span>обычный <b>412</b></span></div></div><div class="kpi" style="--c:#1d3b30"><div class="cname">Кама</div><div class="v">50</div><div class="k">задач за 1 нед.</div><div class="r2"><span><b>11</b> с доступом</span><span>посл. неделя <b>50</b> задач</span><span><b>11</b> активных</span><span><b>9</b> с 2+</span></div><div class="r2"><span>агент <b>12</b></span><span>поиск <b>2</b></span><span>обычный <b>36</b></span></div></div></div>
+
+<div class="card">
+ <h2>Динамика по неделям</h2>
+ <div class="cs">Каждая компания — своей линией, суммы между компаниями не берутся.
+  Кнопки оставляют на графиках и в таблице только выбранную.</div>
+ <div class="bar" id="bar"></div>
+ <div class="g3">
+  <div><h3>Задач за неделю</h3><div class="cs">сколько чатов создано</div>
+   <div class="cw"><canvas id="ch1"></canvas></div></div>
+  <div><h3>Активных людей</h3><div class="cs">разных авторов за неделю</div>
+   <div class="cw"><canvas id="ch2"></canvas></div></div>
+  <div><h3>С 2+ задачами</h3><div class="cs">из активных — больше одной задачи</div>
+   <div class="cw"><canvas id="ch3"></canvas></div></div>
+  <div><h3>Задач в агентском режиме</h3><div class="cs">из общего числа задач</div>
+   <div class="cw"><canvas id="ch4"></canvas></div></div>
+ </div>
+</div>
+
+<div class="card">
+ <h2 id="t_head">Недели по компаниям</h2>
+ <div class="cs" id="t_sub"></div>
+ <table><thead id="thead"></thead><tbody id="tbody"></tbody></table>
+</div>
+
+<div class="card">
+ <h2>Как читать</h2>
+ <div class="cs" style="margin:0">
+  <b>Задач</b> — сколько чатов создано за неделю.<br>
+  <b>Активных</b> — сколько РАЗНЫХ людей писали на этой неделе: человек, работавший пять
+  дней, считается один раз.<br>
+  <b>2+ задачи</b> — сколько из активных сделали за эту неделю больше одной задачи. Это
+  и есть признак того, что инструментом пользуются, а не заглянули один раз.<br>
+  <b>Охват</b> — активные к числу людей с доступом. Знаменатель постоянный и от недели
+  не зависит.
+ </div>
+</div>
+
+<script>
+var D={"clients": [{"name": "Татэнерго", "roster": 102, "since": "2026-06-04", "weeks": [{"w": "2026-06-01", "label": "01.06 — 07.06", "chats": 81, "active": 10, "act2": 8, "agent": 8, "web": 12, "chat": 61}, {"w": "2026-06-08", "label": "08.06 — 14.06", "chats": 42, "active": 11, "act2": 8, "agent": 4, "web": 6, "chat": 32}, {"w": "2026-06-15", "label": "15.06 — 21.06", "chats": 26, "active": 11, "act2": 5, "agent": 4, "web": 3, "chat": 19}, {"w": "2026-06-22", "label": "22.06 — 28.06", "chats": 92, "active": 29, "act2": 21, "agent": 10, "web": 17, "chat": 65}, {"w": "2026-06-29", "label": "29.06 — 05.07", "chats": 70, "active": 25, "act2": 16, "agent": 8, "web": 13, "chat": 49}, {"w": "2026-07-06", "label": "06.07 — 12.07", "chats": 76, "active": 32, "act2": 16, "agent": 12, "web": 8, "chat": 56}, {"w": "2026-07-13", "label": "13.07 — 19.07", "chats": 176, "active": 51, "act2": 38, "agent": 21, "web": 21, "chat": 134}, {"w": "2026-07-20", "label": "20.07 — 26.07", "chats": 103, "active": 40, "act2": 19, "agent": 30, "web": 7, "chat": 66}, {"w": "2026-07-27", "label": "27.07 — 02.08", "chats": 155, "active": 43, "act2": 30, "agent": 40, "web": 11, "chat": 104}, {"w": "2026-08-03", "label": "03.08 — 09.08", "chats": 130, "active": 34, "act2": 23, "agent": 37, "web": 4, "chat": 89}], "chats": 951, "agent": 174, "web": 102, "chat": 675, "active": 102, "act2": 82, "first": "2026-06-04"}, {"name": "Шишмаойл", "roster": 14, "since": "", "weeks": [{"w": "2026-04-27", "label": "27.04 — 03.05", "chats": 13, "active": 4, "act2": 3, "agent": 5, "web": 0, "chat": 8}, {"w": "2026-05-04", "label": "04.05 — 10.05", "chats": 12, "active": 5, "act2": 2, "agent": 4, "web": 1, "chat": 7}, {"w": "2026-05-11", "label": "11.05 — 17.05", "chats": 10, "active": 6, "act2": 2, "agent": 1, "web": 0, "chat": 9}, {"w": "2026-05-18", "label": "18.05 — 24.05", "chats": 6, "active": 4, "act2": 1, "agent": 1, "web": 0, "chat": 5}, {"w": "2026-05-25", "label": "25.05 — 31.05", "chats": 6, "active": 2, "act2": 2, "agent": 0, "web": 2, "chat": 4}, {"w": "2026-06-01", "label": "01.06 — 07.06", "chats": 12, "active": 3, "act2": 1, "agent": 7, "web": 1, "chat": 4}, {"w": "2026-06-08", "label": "08.06 — 14.06", "chats": 6, "active": 2, "act2": 1, "agent": 3, "web": 0, "chat": 3}, {"w": "2026-06-15", "label": "15.06 — 21.06", "chats": 2, "active": 1, "act2": 1, "agent": 1, "web": 0, "chat": 1}, {"w": "2026-06-22", "label": "22.06 — 28.06", "chats": 7, "active": 4, "act2": 1, "agent": 2, "web": 0, "chat": 5}, {"w": "2026-06-29", "label": "29.06 — 05.07", "chats": 2, "active": 1, "act2": 1, "agent": 2, "web": 0, "chat": 0}, {"w": "2026-07-06", "label": "06.07 — 12.07", "chats": 7, "active": 2, "act2": 2, "agent": 1, "web": 1, "chat": 5}, {"w": "2026-07-13", "label": "13.07 — 19.07", "chats": 3, "active": 2, "act2": 1, "agent": 1, "web": 2, "chat": 0}, {"w": "2026-07-20", "label": "20.07 — 26.07", "chats": 10, "active": 2, "act2": 2, "agent": 2, "web": 4, "chat": 4}, {"w": "2026-07-27", "label": "27.07 — 02.08", "chats": 2, "active": 2, "act2": 0, "agent": 0, "web": 0, "chat": 2}, {"w": "2026-08-03", "label": "03.08 — 09.08", "chats": 2, "active": 1, "act2": 1, "agent": 1, "web": 0, "chat": 1}], "chats": 100, "agent": 31, "web": 11, "chat": 58, "active": 14, "act2": 9, "first": "2026-04-29"}, {"name": "Иннополис", "roster": 43, "since": "", "weeks": [{"w": "2026-07-20", "label": "20.07 — 26.07", "chats": 2, "active": 1, "act2": 1, "agent": 0, "web": 0, "chat": 2}, {"w": "2026-07-27", "label": "27.07 — 02.08", "chats": 124, "active": 40, "act2": 22, "agent": 30, "web": 10, "chat": 84}, {"w": "2026-08-03", "label": "03.08 — 09.08", "chats": 78, "active": 18, "act2": 12, "agent": 29, "web": 9, "chat": 40}], "chats": 204, "agent": 59, "web": 19, "chat": 126, "active": 43, "act2": 26, "first": "2026-07-23"}, {"name": "Охтин-Ойл", "roster": 39, "since": "", "weeks": [{"w": "2026-03-30", "label": "30.03 — 05.04", "chats": 6, "active": 3, "act2": 2, "agent": 1, "web": 2, "chat": 3}, {"w": "2026-04-06", "label": "06.04 — 12.04", "chats": 64, "active": 17, "act2": 13, "agent": 22, "web": 0, "chat": 42}, {"w": "2026-04-13", "label": "13.04 — 19.04", "chats": 73, "active": 17, "act2": 13, "agent": 30, "web": 5, "chat": 38}, {"w": "2026-04-20", "label": "20.04 — 26.04", "chats": 77, "active": 20, "act2": 13, "agent": 40, "web": 6, "chat": 31}, {"w": "2026-04-27", "label": "27.04 — 03.05", "chats": 66, "active": 17, "act2": 13, "agent": 46, "web": 3, "chat": 17}, {"w": "2026-05-04", "label": "04.05 — 10.05", "chats": 68, "active": 18, "act2": 14, "agent": 44, "web": 5, "chat": 19}, {"w": "2026-05-11", "label": "11.05 — 17.05", "chats": 64, "active": 14, "act2": 12, "agent": 47, "web": 4, "chat": 13}, {"w": "2026-05-18", "label": "18.05 — 24.05", "chats": 47, "active": 12, "act2": 7, "agent": 33, "web": 1, "chat": 13}, {"w": "2026-05-25", "label": "25.05 — 31.05", "chats": 49, "active": 16, "act2": 9, "agent": 23, "web": 4, "chat": 22}, {"w": "2026-06-01", "label": "01.06 — 07.06", "chats": 51, "active": 17, "act2": 13, "agent": 32, "web": 2, "chat": 17}, {"w": "2026-06-08", "label": "08.06 — 14.06", "chats": 61, "active": 19, "act2": 13, "agent": 38, "web": 1, "chat": 22}, {"w": "2026-06-15", "label": "15.06 — 21.06", "chats": 90, "active": 23, "act2": 18, "agent": 63, "web": 2, "chat": 25}, {"w": "2026-06-22", "label": "22.06 — 28.06", "chats": 110, "active": 21, "act2": 16, "agent": 79, "web": 4, "chat": 27}, {"w": "2026-06-29", "label": "29.06 — 05.07", "chats": 87, "active": 19, "act2": 11, "agent": 66, "web": 2, "chat": 19}, {"w": "2026-07-06", "label": "06.07 — 12.07", "chats": 68, "active": 18, "act2": 14, "agent": 60, "web": 2, "chat": 6}, {"w": "2026-07-13", "label": "13.07 — 19.07", "chats": 44, "active": 16, "act2": 10, "agent": 34, "web": 0, "chat": 10}, {"w": "2026-07-20", "label": "20.07 — 26.07", "chats": 69, "active": 18, "act2": 15, "agent": 57, "web": 2, "chat": 10}, {"w": "2026-07-27", "label": "27.07 — 02.08", "chats": 147, "active": 28, "act2": 21, "agent": 105, "web": 7, "chat": 35}, {"w": "2026-08-03", "label": "03.08 — 09.08", "chats": 173, "active": 29, "act2": 26, "agent": 121, "web": 13, "chat": 39}, {"w": "2026-08-10", "label": "10.08 — 16.08", "chats": 12, "active": 10, "act2": 2, "agent": 6, "web": 2, "chat": 4}], "chats": 1426, "agent": 947, "web": 67, "chat": 412, "active": 35, "act2": 31, "first": "2026-04-03"}, {"name": "Кама", "roster": 11, "since": "", "weeks": [{"w": "2026-08-03", "label": "03.08 — 09.08", "chats": 50, "active": 11, "act2": 9, "agent": 12, "web": 2, "chat": 36}], "chats": 50, "agent": 12, "web": 2, "chat": 36, "active": 11, "act2": 9, "first": "2026-08-03"}], "weeks": ["2026-03-30", "2026-04-06", "2026-04-13", "2026-04-20", "2026-04-27", "2026-05-04", "2026-05-11", "2026-05-18", "2026-05-25", "2026-06-01", "2026-06-08", "2026-06-15", "2026-06-22", "2026-06-29", "2026-07-06", "2026-07-13", "2026-07-20", "2026-07-27", "2026-08-03", "2026-08-10"], "wlabel": {"2026-03-30": "30.03 — 05.04", "2026-04-06": "06.04 — 12.04", "2026-04-13": "13.04 — 19.04", "2026-04-20": "20.04 — 26.04", "2026-04-27": "27.04 — 03.05", "2026-05-04": "04.05 — 10.05", "2026-05-11": "11.05 — 17.05", "2026-05-18": "18.05 — 24.05", "2026-05-25": "25.05 — 31.05", "2026-06-01": "01.06 — 07.06", "2026-06-08": "08.06 — 14.06", "2026-06-15": "15.06 — 21.06", "2026-06-22": "22.06 — 28.06", "2026-06-29": "29.06 — 05.07", "2026-07-06": "06.07 — 12.07", "2026-07-13": "13.07 — 19.07", "2026-07-20": "20.07 — 26.07", "2026-07-27": "27.07 — 02.08", "2026-08-03": "03.08 — 09.08", "2026-08-10": "10.08 — 16.08"}};
+var SEL=null;   /* null — показывать все компании, каждую отдельной линией */
+var CH=[];
+var PAL=["#1d3b30", "#9a6b2f", "#4a6b5d", "#7d6b52"];
+
+function nf(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+function byWeek(c){var m={};c.weeks.forEach(function(w){m[w.w]=w;});return m;}
+
+/* Какие компании сейчас показываем. Сумм между компаниями нет нигде: складывать задачи
+   разных клиентов бессмысленно — это разные пилоты с разным числом людей и сроком. */
+function shown(){
+ return SEL===null ? D.clients.map(function(c,i){return i;}) : [SEL];
+}
+
+/* Недели, которые попадут на ось: только те, где у показываемых компаний есть данные.
+   У Камы одна неделя, у Охтина девятнадцать — пустой хвост оси никому не нужен. */
+function visWeeks(){
+ var set={};
+ shown().forEach(function(i){D.clients[i].weeks.forEach(function(w){set[w.w]=1;});});
+ return D.weeks.filter(function(w){return set[w];});
+}
+
+function renderBar(){
+ var h='<button class="btn'+(SEL===null?' on':'')+'" onclick="pick(null)">Все компании</button>';
+ D.clients.forEach(function(c,i){
+   h+='<button class="btn'+(SEL===i?' on':'')+'" onclick="pick('+i+')">'+c.name+'</button>';});
+ document.getElementById('bar').innerHTML=h;
+}
+
+/* Таблица идёт блоками по компаниям — заголовок компании, под ним её недели. Общей
+   итоговой строки нет по той же причине, по которой нет сумм на графиках. */
+function renderTable(){
+ var idx=shown();
+ document.getElementById('t_sub').innerHTML=
+   (SEL===null?'Все компании, по каждой отдельно':D.clients[SEL].name)+
+   ' · охват считается от числа людей с доступом в этой компании';
+ document.getElementById('thead').innerHTML=
+   '<tr><th>Неделя</th><th>Задач</th><th>Агент</th><th>Поиск</th><th>Обычный</th>'+
+   '<th>Активных</th><th>2+ задачи</th><th>Задач на активного</th><th>Охват</th></tr>';
+ var h='',NC=9;
+ idx.forEach(function(i){
+   var c=D.clients[i];
+   h+='<tr class="grp"><td colspan="'+NC+'" style="color:'+PAL[i%PAL.length]+'">'+c.name+
+      ' · '+c.roster+' с доступом · '+nf(c.chats)+' задач за '+c.weeks.length+' нед.'+
+      ' · агент '+nf(c.agent)+' / поиск '+nf(c.web)+' / обычный '+nf(c.chat)+'</td></tr>';
+   if(!c.weeks.length){h+='<tr><td colspan="'+NC+'" class="mut">данных нет</td></tr>';return;}
+   c.weeks.forEach(function(x){
+     var per=x.active?(x.chats/x.active).toFixed(1).replace('.',','):'—';
+     var cov=c.roster?Math.round(100*x.active/c.roster)+'%':'—';
+     var z=function(v){return v?nf(v):'<span class="mut">0</span>';};
+     var ap=x.chats?' <span class="mut">'+Math.round(100*x.agent/x.chats)+'%</span>':'';
+     h+='<tr><td>'+x.label+'</td><td>'+nf(x.chats)+'</td><td>'+z(x.agent)+ap+'</td><td>'+
+        z(x.web)+'</td><td>'+z(x.chat)+'</td><td>'+nf(x.active)+'</td><td>'+
+        z(x.act2)+'</td><td>'+per+'</td><td>'+cov+'</td></tr>';
+   });
+ });
+ document.getElementById('tbody').innerHTML=h;
+}
+
+/* Три отдельных графика вместо одного совмещённого: задачи и люди — разные величины,
+   на общей картинке линия людей прижималась к нулю на фоне задач. У каждого своя ось.
+   Компании — отдельными сериями, а не суммой.
+
+   Полосы горизонтальные (indexAxis:'y'): подписи недель и названия компаний читаются
+   строкой, а не наклонённым текстом под осью. Линии остаются вертикальными — у них
+   ось времени слева направо, иначе динамика не читается.
+
+   Три случая, и в каждом полоса означает своё:
+     одна неделя  → полоса на КОМПАНИЮ (сравниваем компании между собой);
+     одна компания → полоса на НЕДЕЛЮ (смотрим её динамику);
+     всё сразу     → линии по неделям, серия на компанию. */
+function mk(id,field,unit){
+ var el=document.getElementById(id);if(!el||typeof Chart==='undefined')return null;
+ var wk=visWeeks(),idx=shown(),multi=idx.length>1,one=wk.length<=1;
+ var labels,ds,horiz=true,legend=false;
+
+ if(one){
+   labels=idx.map(function(i){return D.clients[i].name;});
+   ds=[{data:idx.map(function(i){
+          var m=byWeek(D.clients[i]);return m[wk[0]]?m[wk[0]][field]:null;}),
+        backgroundColor:idx.map(function(i){return PAL[i%PAL.length];}),
+        borderRadius:3,maxBarThickness:34}];
+ } else if(!multi){
+   var i0=idx[0],m0=byWeek(D.clients[i0]);
+   labels=wk.map(function(w){return D.wlabel[w];});
+   ds=[{data:wk.map(function(w){return m0[w]?m0[w][field]:null;}),
+        backgroundColor:PAL[i0%PAL.length],borderRadius:3,maxBarThickness:22}];
+ } else {
+   horiz=false;legend=true;
+   labels=wk.map(function(w){return D.wlabel[w];});
+   ds=idx.map(function(i){
+     var m=byWeek(D.clients[i]),col=PAL[i%PAL.length];
+     return {label:D.clients[i].name,
+       /* null там, где у компании этой недели ещё не было: линия начнётся с её первой
+          недели, а не поползёт от нуля через всю историю чужого пилота. */
+       data:wk.map(function(w){return m[w]?m[w][field]:null;}),
+       borderColor:col,backgroundColor:col,tension:.25,spanGaps:false,
+       borderWidth:2,pointRadius:2};
+   });
+ }
+
+ var val=function(c){return horiz?c.parsed.x:c.parsed.y;};
+ return new Chart(el,{type:horiz?'bar':'line',
+  data:{labels:labels,datasets:ds},
+  options:{maintainAspectRatio:false,responsive:true,
+   indexAxis:horiz?'y':'x',
+   interaction:{mode:'index',intersect:false},
+   plugins:{legend:{display:legend,position:'bottom',
+      labels:{boxWidth:10,boxHeight:10,font:{size:11}}},
+     tooltip:{callbacks:{label:function(c){
+        return (c.dataset.label?c.dataset.label+': ':'')+val(c)+' '+unit;}}}},
+   scales:horiz
+     ? {x:{beginAtZero:true,ticks:{precision:0}},
+         y:{ticks:{font:{size:11},autoSkip:false},grid:{display:false}}}
+     : {y:{beginAtZero:true,ticks:{precision:0}},
+         x:{ticks:{maxRotation:60,minRotation:0,autoSkip:true,font:{size:10}}}}
+  }});
+}
+
+/* Высота под число полос: 19 недель в 240px не помещаются, а одна компания в них
+   болтается. Для линий высота постоянная. */
+function fitH(){
+ var wk=visWeeks(),idx=shown(),n;
+ if(wk.length<=1) n=idx.length;            /* полоса на компанию */
+ else if(idx.length===1) n=wk.length;      /* полоса на неделю */
+ else n=0;                                 /* линии */
+ var px=n?Math.max(150,34+n*26):240;
+ var els=document.querySelectorAll('.cw');
+ for(var i=0;i<els.length;i++)els[i].style.height=px+'px';
+}
+
+function renderChart(){
+ CH.forEach(function(c){try{c.destroy();}catch(e){}});CH=[];
+ fitH();
+ [mk('ch1','chats','задач'),mk('ch2','active','человек'),mk('ch3','act2','человек'),
+  mk('ch4','agent','задач')]
+   .forEach(function(c){if(c)CH.push(c);});
+}
+
+function pick(i){SEL=i;renderBar();renderTable();renderChart();}
+pick(null);
+</script>
+</div></body></html>
