@@ -1,0 +1,36 @@
+# Выкладка статических файлов на GitHub Pages.
+# Legacy-сборщик Pages на этом репозитории падал с «Page build failed» без подробностей,
+# поэтому используется штатный путь через Actions: он же работает в estimate-app.
+# Для публичного репозитория минуты Actions не тарифицируются.
+name: Deploy to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Выкладки не должны наступать друг на друга, но и отменять начатую не нужно:
+# каждый коммит обязан доехать до сайта.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v4
