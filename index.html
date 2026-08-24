@@ -770,10 +770,14 @@ function chSteps(){
  }
  return {steps:out,byWeek:byWeek};
 }
-/* Какая компания показана крупно. null — все сразу; так страница и открывается, но при пяти
-   линиях это каша, поэтому над графиками стоят плашки выбора. Выбранная рисуется своим
-   цветом и толще, остальные — светло-серым фоном: форма чужой кривой видна, а спорить за
-   внимание она перестаёт. Значение глобальное, периода не касается. */
+/* Какая компания показана. null — все сразу; так страница и открывается, но при пяти
+   линиях это каша, поэтому над графиками стоят плашки выбора.
+   Выбрана компания — на графике ОСТАЁТСЯ ТОЛЬКО ОНА. Первая версия рисовала остальные
+   светло-серым «для контекста», и заказчик спросил в тот же день, что это за линии на
+   заднем фоне. Ответ по существу: контекст, за которым не приходили. Сравнение компаний
+   между собой даёт таблица выше, а от графика ждут одну ясную кривую — серый ворох за ней
+   только мешает и вдобавок растягивает ось Y по чужому максимуму.
+   Значение глобальное, периода не касается. */
 var CHSEL=null;
 function chPick(n){CHSEL=(CHSEL===n?null:n);renderPick();renderCharts();}
 function renderPick(){
@@ -804,7 +808,9 @@ function renderCharts(){
      '<div class="chcv"><canvas id="cv_'+m[0]+'"></canvas></div></div>';}).join('');
  }
  MET.forEach(function(m){
-  var ds=S.clients.map(function(c){
+  var ds=S.clients.filter(function(c){
+   return CHSEL===null||c.name===CHSEL;      /* чужие линии не рисуем вовсе */
+  }).map(function(c){
    var data=steps.map(function(s){
     if(s.b<c.first)return null;                   /* компания ещё не начинала — не ноль */
     var v=agg(c,s.a,s.b);
@@ -812,12 +818,9 @@ function renderCharts(){
            (m[0]==='chats'?v.chats:(m[0]==='agent'?v.agent:
            (m[0]==='web'?v.web:v.chat))));
    });
-   var dim=CHSEL!==null&&c.name!==CHSEL;
-   return {label:c.name,data:data,
-           borderColor:dim?'#d6d6cf':c.color,backgroundColor:dim?'#d6d6cf':c.color,
-           borderWidth:dim?1:(CHSEL===null?1.6:2.4),
-           pointRadius:(dim||steps.length>25)?0:2,
-           order:dim?2:1,tension:.25,spanGaps:false};
+   return {label:c.name,data:data,borderColor:c.color,backgroundColor:c.color,
+           borderWidth:CHSEL===null?1.6:2.4,
+           pointRadius:steps.length>25?0:2,tension:.25,spanGaps:false};
   });
   var el=document.getElementById('cv_'+m[0]);
   if(!el)return;
@@ -826,10 +829,7 @@ function renderCharts(){
    options:{maintainAspectRatio:false,responsive:true,
     interaction:{mode:'index',intersect:false},
     plugins:{legend:{display:false},
-     /* При выбранной компании в подсказке только она: иначе там снова пять строк,
-        от которых и уходили. */
-     tooltip:{filter:function(i){return CHSEL===null||i.dataset.label===CHSEL;},
-       callbacks:{label:function(c){
+     tooltip:{callbacks:{label:function(c){
        return c.dataset.label+': '+(c.raw===null?'—':c.raw);}}}},
     scales:{y:{beginAtZero:true,ticks:{precision:0,font:{size:10}},
                grid:{color:'#ecece6'}},
