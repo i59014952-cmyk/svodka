@@ -770,22 +770,29 @@ function chSteps(){
  }
  return {steps:out,byWeek:byWeek};
 }
-/* Какая компания показана. null — все сразу; так страница и открывается, но при пяти
-   линиях это каша, поэтому над графиками стоят плашки выбора.
-   Выбрана компания — на графике ОСТАЁТСЯ ТОЛЬКО ОНА. Первая версия рисовала остальные
-   светло-серым «для контекста», и заказчик спросил в тот же день, что это за линии на
-   заднем фоне. Ответ по существу: контекст, за которым не приходили. Сравнение компаний
-   между собой даёт таблица выше, а от графика ждут одну ясную кривую — серый ворох за ней
-   только мешает и вдобавок растягивает ось Y по чужому максимуму.
+/* На графике ВСЕГДА одна компания — та, что выбрана плашкой. Никакого «все сразу»:
+   пять линий на одной картинке нечитаемы, что и показал первый заход, а промежуточная
+   версия с приглушёнными чужими линиями оказалась не лучше — за серым ворохом никто не
+   приходил, и он вдобавок растягивал ось Y по чужому максимуму.
+   Сравнение компаний между собой даёт таблица выше; график отвечает на другой вопрос —
+   как шло у одной. По умолчанию открывается ПЕРВАЯ компания списка (сейчас Татэнерго):
+   именно списка, а не имени в коде, — иначе при перестановке CLIENTS страница открывалась
+   бы пустой и никто бы этого не заметил.
    Значение глобальное, периода не касается. */
 var CHSEL=null;
-function chPick(n){CHSEL=(CHSEL===n?null:n);renderPick();renderCharts();}
+function chCur(){
+ var n=CHSEL;
+ for(var i=0;i<S.clients.length;i++)if(S.clients[i].name===n)return n;
+ return S.clients.length?S.clients[0].name:null;   /* неизвестная — откатываемся к первой */
+}
+/* Повторный клик по выбранной ничего не делает: снять выбор нельзя, пустой график
+   показывать нечего. */
+function chPick(n){if(!n||n===CHSEL)return;CHSEL=n;renderPick();renderCharts();}
 function renderPick(){
  var el=document.getElementById('chpick');
  if(!el)return;
- el.innerHTML='<button type="button" class="'+(CHSEL===null?'on':'')+
-   '" onclick="chPick(null)">Все компании</button>'+
-  S.clients.map(function(c){
+ CHSEL=chCur();
+ el.innerHTML=S.clients.map(function(c){
    /* Имя из конфига CLIENTS, не из пользовательского ввода — вставляется как есть,
       ровно так же, как в строках таблицы выше. */
    return '<button type="button" class="'+(CHSEL===c.name?'on':'')+
@@ -808,8 +815,9 @@ function renderCharts(){
      '<div class="chcv"><canvas id="cv_'+m[0]+'"></canvas></div></div>';}).join('');
  }
  MET.forEach(function(m){
+  var cur=chCur();
   var ds=S.clients.filter(function(c){
-   return CHSEL===null||c.name===CHSEL;      /* чужие линии не рисуем вовсе */
+   return c.name===cur;                      /* только выбранная, чужих серий нет вовсе */
   }).map(function(c){
    var data=steps.map(function(s){
     if(s.b<c.first)return null;                   /* компания ещё не начинала — не ноль */
@@ -819,8 +827,7 @@ function renderCharts(){
            (m[0]==='web'?v.web:v.chat))));
    });
    return {label:c.name,data:data,borderColor:c.color,backgroundColor:c.color,
-           borderWidth:CHSEL===null?1.6:2.4,
-           pointRadius:steps.length>25?0:2,tension:.25,spanGaps:false};
+           borderWidth:2.4,pointRadius:steps.length>25?0:2,tension:.25,spanGaps:false};
   });
   var el=document.getElementById('cv_'+m[0]);
   if(!el)return;
